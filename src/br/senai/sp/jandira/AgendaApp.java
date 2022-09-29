@@ -165,6 +165,8 @@ public class AgendaApp {
 		System.out.println("Categoria: " + paciente2.getPlano().getCategoria());
 		System.out.println("Data: " + agenda2.getDataConsulta());
 		System.out.println("Hora: " + agenda2.getHoraConsulta());
+		
+		
 	}
 
 }
