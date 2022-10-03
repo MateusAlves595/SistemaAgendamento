@@ -32,9 +32,7 @@ public class Especialidade {
 
     //public Especialidade() {// Construtor Default / Padrão
     //}
-    
     //Metodos de acesso aos atributos
-
     public int getContador() {
         return contador;
     }
@@ -42,8 +40,13 @@ public class Especialidade {
     public Integer getCodigo() {
         return codigo;
     }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
     
     
+
     public void setNome(String nome) {
 
         if (nome.length() >= 3) {
@@ -53,6 +56,7 @@ public class Especialidade {
         }
     }
 
+    
     public void setDescricao(String descricao) {
 
         if (descricao.length() >= 10) {

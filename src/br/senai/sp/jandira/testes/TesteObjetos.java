@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import br.senai.sp.jandira.AgendaApp;
+import br.senai.sp.jandira.dao.EspecialidadeDao;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 
@@ -15,16 +16,24 @@ public class TesteObjetos {
         Especialidade e1 = new Especialidade("Cardiologia");
         e1.setNome("Cardiologia");
         e1.setDescricao("Não deixa ter um ataque");
-
+        
+        EspecialidadeDao.gravar(e1);
+        
         Especialidade e2 = new Especialidade("Gastroenterologia");
         e2.setNome("Gastroenterologia");
         e2.setDescricao("Não deixa com dor de barriga");
-
-        Especialidade e4 = new Especialidade("Otorrino", "Cuida do ouvido");
+        
+        EspecialidadeDao.gravar(e2);
+        
+        for (Especialidade ee : EspecialidadeDao.getEspecialidades()) {
+            System.out.println(ee.getNome());
+        }
 
         Especialidade e3 = new Especialidade();
         e3.setNome("Qualquer coisa");
         
+        Especialidade e4 = new Especialidade("Otorrino", "Cuida do ouvido");
+
         //Exibir a quantidade de especialidades
         System.out.println(e1.getContador());
 
