@@ -52,4 +52,17 @@ public class EspecialidadeDao {
         }
     }
     
+    //Criar uma lista inicial de especialidades
+    public static void criarListaDeEspecialidades() {
+        Especialidade e1 = new Especialidade("Cardiologia", "Area da medicina que cuida do coração");
+        Especialidade e2 = new Especialidade("Nefrologia", "Cuida do rim");
+        Especialidade e3 = new Especialidade("Otorrinolaringologia", "Cuida do ouvido");
+        Especialidade e4 = new Especialidade("Pediatria", "Cuida da saude das crianças");
+        
+        especialidades.add(e1);
+        especialidades.add(e2);
+        especialidades.add(e3);
+        especialidades.add(e4);
+    }
+    
 }

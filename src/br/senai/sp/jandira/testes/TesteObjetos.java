@@ -12,6 +12,11 @@ import br.senai.sp.jandira.model.PlanoDeSaude;
 public class TesteObjetos {
 
     public static void main(String[] args) {
+        
+        int[][] c = {
+            {4,5,9},
+            {1,13,25}   
+        };
 
         Especialidade e1 = new Especialidade("Cardiologia");
         e1.setNome("Cardiologia");
