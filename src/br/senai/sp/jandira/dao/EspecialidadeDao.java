@@ -2,6 +2,7 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDao {
     
@@ -63,6 +64,22 @@ public class EspecialidadeDao {
         especialidades.add(e2);
         especialidades.add(e3);
         especialidades.add(e4);
+    }
+    
+    public static DefaultTableModel getTebelaEpecialidades() {
+        
+        String[] titulo = {"Código", "Nome da especialidade", "descrição"};
+        String[][] dados = new String [especialidades.size()][3];
+        
+        
+        for(Especialidade e : especialidades){
+            int i = especialidades.indexOf(e);
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getNome();
+            dados[i][2] = e.getDescricao();
+        }
+        
+        return new DefaultTableModel(dados, titulo);
     }
     
 }
