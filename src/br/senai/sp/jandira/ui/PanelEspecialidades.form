@@ -31,6 +31,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="scrollEspecialidades">
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
