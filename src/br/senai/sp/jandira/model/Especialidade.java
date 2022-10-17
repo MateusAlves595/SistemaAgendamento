@@ -29,9 +29,12 @@ public class Especialidade {
         this.codigo = contador;
 
     }
-
-    //public Especialidade() {// Construtor Default / Padrão
-    //}
+    
+    private void gerarCodigo() {
+        this.contador++;
+        this.codigo = contador;
+    }
+    
     //Metodos de acesso aos atributos
     public int getContador() {
         return contador;
