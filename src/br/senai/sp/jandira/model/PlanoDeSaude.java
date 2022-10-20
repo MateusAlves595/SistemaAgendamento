@@ -4,19 +4,35 @@ import java.time.LocalDate;
 
 public class PlanoDeSaude {
 
+        private static int contador = 99;
+        private Integer codigo;
 	private String operadora;
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
-	private static int quantidade;
+        
 	
-	public  PlanoDeSaude() {
-		this.quantidade++;
-	}
+	
+        
+        //Construtores
+        
+        public PlanoDeSaude(String numero, String operadora, String categoria, LocalDate validade){
+            this.operadora = operadora;
+            this.categoria = categoria;
+            this.numero =  numero;
+            this.validade = validade;
+            gerarCodigo();
+            
+        }
+        
+	private void gerarCodigo() {
+        this.contador++;
+        this.codigo = contador;
+        }
 	
 	public PlanoDeSaude(String operadora) {
 		this.operadora = operadora;
-		this.quantidade++;
+		
 	}
 	
 	public void setOperadora(String operadora){
@@ -34,8 +50,17 @@ public class PlanoDeSaude {
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
+        
+        public void setCodigo(Integer codigo){
+            this.codigo = codigo;
+        }
 	
 	//Retornos
+        
+        public int getContador(){
+            return contador;
+        }
+        
 	public String getOperadora() {
 		return operadora;
 	}
@@ -48,10 +73,10 @@ public class PlanoDeSaude {
 	public LocalDate getValidade() {
 		return validade;
 	}
-	
-	public static int getQuantidade() {
-		return quantidade;
-	}
+        
+        public Integer getCodigo() {
+            return codigo;
+        }
 	
 	
 }

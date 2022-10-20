@@ -20,13 +20,13 @@ public class HomeFrame extends javax.swing.JFrame {
     
     //atributos da classe
     PanelEspecialidades panelEspecialidades;
+    PanelPlanoDeSaude panelPlanoDeSaude;
     
     //Constantes
     private final int POS_X = 10;
     private final int POS_Y = 160;
     private final int LARGURA = 920;
     private final int ALTURA = 400;
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -259,13 +259,14 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
-        
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
-        // TODO add your handling code here:
+        panelPlanoDeSaude.setVisible(true);
+        panelHome.setVisible(false);
+        
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
@@ -323,8 +324,17 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
         
+        panelPlanoDeSaude = new PanelPlanoDeSaude();
+        panelPlanoDeSaude.setBounds(
+                POS_X, 
+                POS_Y, 
+                LARGURA,
+                ALTURA);
         
+        getContentPane().add(panelPlanoDeSaude);
+        panelPlanoDeSaude.setVisible(false);
     }
+    
 
     
 

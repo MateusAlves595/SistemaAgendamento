@@ -85,13 +85,13 @@ public class TesteObjetos {
         System.out.println("--------------Operadoras----------------");
         for (PlanoDeSaude e : planosDeSaude) {
             System.out.println(e.getOperadora());
-            System.out.println(e.getQuantidade());
+            
         }
 
         //System.out.println(PlanoDeSaude.getQuantidade());
         AgendaApp.main(args);
 
-        System.out.println("----------" + PlanoDeSaude.getQuantidade());
+       
 
     }
 
