@@ -60,9 +60,9 @@ public class PlanoDeSaudeDao {
         planosDeSaude.add(p);
     }
     
-    public static void excluir(String numero) {
+    public static void excluir(Integer codigo) {
         for(PlanoDeSaude p : planosDeSaude){
-            if (p.getNumero()== numero){
+            if (p.getCodigo()== codigo){
                 planosDeSaude.remove(p);
                 break;
             }

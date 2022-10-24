@@ -10,11 +10,16 @@ public class PlanoDeSaude {
 	private String categoria;
 	private String numero;
 	private LocalDate validade;
-        
-	
-	
+
+    
         
         //Construtores
+        
+        public PlanoDeSaude(){
+            this.contador++;
+            this.codigo = contador;
+            gerarCodigo();
+        }
         
         public PlanoDeSaude(String numero, String operadora, String categoria, LocalDate validade){
             this.operadora = operadora;
@@ -32,7 +37,7 @@ public class PlanoDeSaude {
 	
 	public PlanoDeSaude(String operadora) {
 		this.operadora = operadora;
-		
+		gerarCodigo();
 	}
 	
 	public void setOperadora(String operadora){
