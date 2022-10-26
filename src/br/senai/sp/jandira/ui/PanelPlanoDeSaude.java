@@ -3,7 +3,6 @@ package br.senai.sp.jandira.ui;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDao;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoDeSaude;
-import javax.swing.JTable;
 import javax.swing.JOptionPane;
 
 
@@ -127,17 +126,18 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
     private void buttonEditarPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarPlanoDeSaudeActionPerformed
 
         if (getLinha() != -1) {
-            editarEspecialidade();
+            editarPlanoDeSaude();
+            
         } else {
-            JOptionPane.showConfirmDialog(
+            JOptionPane.showMessageDialog(
                     this,
                     "Por favor, selecione o plano que você deseja editar.",
-                    "Especialidades",
+                    "Plano de Saúde",
                     JOptionPane.WARNING_MESSAGE);
         }
     }                                                          
 
-    private void editarEspecialidade() {
+    private void editarPlanoDeSaude() {
 
         PlanoDeSaude planoDeSaude = PlanoDeSaudeDao.getPlanoDeSaude(getCodigo());
 
@@ -147,7 +147,7 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
                         planoDeSaude,
                         OperacaoEnum.EDITAR);
         
-        PlanoDeSaudeDialog.setVisible(true);
+        planoDeSaudeDialog.setVisible(true);
         preencherTabela();
     
     }//GEN-LAST:event_buttonEditarPlanoDeSaudeActionPerformed

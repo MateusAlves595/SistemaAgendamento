@@ -256,17 +256,19 @@ public class HomeFrame extends javax.swing.JFrame {
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         panelEspecialidades.setVisible(false);
         panelHome.setVisible(true);
+        panelPlanoDeSaude.setVisible(false);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
+        panelPlanoDeSaude.setVisible(false);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
         panelPlanoDeSaude.setVisible(true);
         panelHome.setVisible(false);
-        
+        panelEspecialidades.setVisible(false);
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed

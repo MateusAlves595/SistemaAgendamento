@@ -16,8 +16,6 @@ public class PlanoDeSaude {
         //Construtores
         
         public PlanoDeSaude(){
-            this.contador++;
-            this.codigo = contador;
             gerarCodigo();
         }
         
@@ -49,8 +47,8 @@ public class PlanoDeSaude {
 	}
 	
 	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+            this.numero = numero;
+        }
 	
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;

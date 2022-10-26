@@ -2,6 +2,7 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +34,10 @@ public class PlanoDeSaudeDao {
             dados[i][1] = p.getNumero();
             dados[i][2] = p.getOperadora();
             dados[i][3] = p.getCategoria();
-            dados[i][4] = p.getValidade().toString();
+            
+            DateTimeFormatter barra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            
+            dados[i][4] = p.getValidade().format(barra);
             
             
         }
@@ -46,10 +50,10 @@ public class PlanoDeSaudeDao {
         return planosDeSaude;
     }
     
-    public static PlanoDeSaude getPlanoDeSaude(String numero) {
-        for(PlanoDeSaude e : planosDeSaude){
-            if (e.getNumero() == numero){
-                return e;
+    public static PlanoDeSaude getPlanoDeSaude(Integer codigo) {
+        for(PlanoDeSaude p : planosDeSaude){
+            if (p.getCodigo() == codigo){
+                return p;
             }
         }
         
@@ -62,7 +66,7 @@ public class PlanoDeSaudeDao {
     
     public static void excluir(Integer codigo) {
         for(PlanoDeSaude p : planosDeSaude){
-            if (p.getCodigo()== codigo){
+            if (p.getCodigo() == codigo){
                 planosDeSaude.remove(p);
                 break;
             }
