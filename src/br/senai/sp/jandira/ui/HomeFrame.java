@@ -137,6 +137,11 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPacientes.setText("Pacientes");
         buttonPacientes.setToolTipText("Cadastro de paciente");
         buttonPacientes.setBorder(new javax.swing.border.MatteBorder(null));
+        buttonPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPacientesActionPerformed(evt);
+            }
+        });
         getContentPane().add(buttonPacientes);
         buttonPacientes.setBounds(240, 100, 120, 50);
 
@@ -282,6 +287,10 @@ public class HomeFrame extends javax.swing.JFrame {
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonAgendaActionPerformed
+
+    private void buttonPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacientesActionPerformed
+        
+    }//GEN-LAST:event_buttonPacientesActionPerformed
 
     /**
      * @ram args the command line arguments

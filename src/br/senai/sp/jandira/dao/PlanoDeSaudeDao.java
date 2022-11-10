@@ -1,26 +1,51 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class PlanoDeSaudeDao {
     
+    private final static String URL = "C:\\Users\\22282205\\Java\\PlanoDeSaude.txt";
+    private final static Path PATH = Paths.get(URL);
+    
     private static ArrayList<PlanoDeSaude> planosDeSaude = new ArrayList<>();
     
     public static void criarListaDePlanosDeSaude() {
-        PlanoDeSaude p1 = new PlanoDeSaude("2228-9432-5539-4123", "Amil", "Gold",  LocalDate.of(2022, 10, 20));
-        PlanoDeSaude p2 = new PlanoDeSaude("5927-3342-7900-5214", "NotreDame", "Prata", LocalDate.of(2022, 10, 20));
-        PlanoDeSaude p3 = new PlanoDeSaude("6343-4682-5423-6745", "Porto Seguro", "Bronze",  LocalDate.of(2022, 10, 20));
-        PlanoDeSaude p4 = new PlanoDeSaude("8745-8264-6732-7632", "Bradesco", "Prata",  LocalDate.of(2022, 10, 20));
-        
-        planosDeSaude.add(p1);
-        planosDeSaude.add(p2);
-        planosDeSaude.add(p3);
-        planosDeSaude.add(p4);
+       
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
+            
+            while(linha != null) {
+                
+                String[] vetor = linha.split(";");
+                PlanoDeSaude p = new PlanoDeSaude(vetor[1],
+                        vetor[2],
+                        vetor[3],
+                        LocalDate.parse(vetor[4]),
+                        Integer.valueOf(vetor[0]));
+                planosDeSaude.add(p);
+                linha = leitor.readLine();
+            }
+            
+            leitor.close();
+            
+        } catch (IOException p) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
+
+        }
               
     }
     
@@ -62,6 +87,19 @@ public class PlanoDeSaudeDao {
         
     public static void gravar(PlanoDeSaude p) {
         planosDeSaude.add(p);
+        
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            
+            escritor.write(p.getPlanoDeSaudeSeparado());
+            escritor.newLine();
+            escritor.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Aconteceu um erro");
+        }
     }
     
     public static void excluir(Integer codigo) {

@@ -1,21 +1,40 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDao {
     
-    /*
-    Essa classe será responsavel pela persistencia de dados das
-    especialidades, por  exemplo, adicionar uma nova especialidade,
-    excluir uma especialidade, etc.
-    */
+    private final static String URL = "C:\\Users\\22282205\\Java\\Especialidade.txt";
+    private final static Path PATH = Paths.get(URL);
     
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
     
     public static void gravar(Especialidade e) {//CREATE
         especialidades.add(e);
+        
+        //Gravar em arquivo
+        try {
+            BufferedWriter escritor = Files.newBufferedWriter(PATH,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+            
+            escritor.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
+            escritor.newLine();
+            escritor.close();
+            
+        } catch (IOException error) {
+            JOptionPane.showMessageDialog(null, "Ocoreu um erro");
+        }
     }
     
     public static ArrayList<Especialidade> getEspecialidades() {//READ
@@ -55,15 +74,29 @@ public class EspecialidadeDao {
     
     //Criar uma lista inicial de especialidades
     public static void criarListaDeEspecialidades() {
-        Especialidade e1 = new Especialidade("Cardiologia", "Area da medicina que cuida do coração");
-        Especialidade e2 = new Especialidade("Nefrologia", "Cuida do rim");
-        Especialidade e3 = new Especialidade("Otorrinolaringologia", "Cuida do ouvido");
-        Especialidade e4 = new Especialidade("Pediatria", "Cuida da saude das crianças");
         
-        especialidades.add(e1);
-        especialidades.add(e2);
-        especialidades.add(e3);
-        especialidades.add(e4);
+        try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            
+            String linha = leitor.readLine();
+            
+            while(linha != null) {
+                //Transformar os dados da linha em uma especialidade 
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(vetor[1], vetor[2], Integer.valueOf(vetor[0]));
+                
+                especialidades.add(e);
+                
+                //ler a próxima linha
+                linha = leitor.readLine();
+            }
+            
+            leitor.close();
+            
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
+        }
+        
     }
     
     public static DefaultTableModel getTebelaEpecialidades() {
