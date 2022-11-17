@@ -30,8 +30,7 @@ public class Especialidade {
     public Especialidade(String nome, String descricao, Integer codigo) {
         this.nome = nome;
         this.descricao = descricao;
-        this.codigo = codigo;
-        this.contador = codigo;
+        gerarCodigo();
     }
     
     private void gerarCodigo() {
