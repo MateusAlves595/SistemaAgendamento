@@ -33,8 +33,7 @@ public class PlanoDeSaude {
             this.categoria = categoria;
             this.numero =  numero;
             this.validade = validade;
-            this.codigo = codigo;
-            this.contador = codigo;
+            gerarCodigo();
         }
         
 	private void gerarCodigo() {

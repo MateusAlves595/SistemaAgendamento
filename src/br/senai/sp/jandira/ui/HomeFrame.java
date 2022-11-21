@@ -21,6 +21,7 @@ public class HomeFrame extends javax.swing.JFrame {
     //atributos da classe
     PanelEspecialidades panelEspecialidades;
     PanelPlanoDeSaude panelPlanoDeSaude;
+    PanelMedico panelMedico;
     
     //Constantes
     private final int POS_X = 10;
@@ -262,22 +263,28 @@ public class HomeFrame extends javax.swing.JFrame {
         panelEspecialidades.setVisible(false);
         panelHome.setVisible(true);
         panelPlanoDeSaude.setVisible(false);
+        panelMedico.setVisible(false);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
         panelPlanoDeSaude.setVisible(false);
+        panelMedico.setVisible(false);
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
         panelPlanoDeSaude.setVisible(true);
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
+        panelMedico.setVisible(false);
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicosActionPerformed
-        // TODO add your handling code here:
+        panelMedico.setVisible(true);
+        panelHome.setVisible(false);
+        panelEspecialidades.setVisible(false);
+        panelPlanoDeSaude.setVisible(false);
     }//GEN-LAST:event_buttonMedicosActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
@@ -344,6 +351,16 @@ public class HomeFrame extends javax.swing.JFrame {
         
         getContentPane().add(panelPlanoDeSaude);
         panelPlanoDeSaude.setVisible(false);
+        
+        panelMedico = new PanelMedico();
+        panelMedico.setBounds(
+                POS_X, 
+                POS_Y, 
+                LARGURA,
+                ALTURA);
+        
+        getContentPane().add(panelMedico);
+        panelMedico.setVisible(false);
     }
     
 

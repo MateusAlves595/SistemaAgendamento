@@ -23,6 +23,21 @@ public class Medico {
         this.dataNascimento = dataNascimento;
         gerarCodigo();
     }
+    
+    public Medico(String crm, String nome, String telefone, Integer codigo) {
+        this.crm = crm;
+        this.nome = nome;
+        this.telefone = telefone;
+        gerarCodigo();
+    }
+    
+    public Medico(){
+        gerarCodigo();
+    }
+    
+    public Medico(String crm){
+        this.crm = crm;
+    }
     ////////
 
     public String getNome() {

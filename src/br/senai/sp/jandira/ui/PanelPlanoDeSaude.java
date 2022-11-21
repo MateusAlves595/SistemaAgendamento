@@ -4,6 +4,7 @@ import br.senai.sp.jandira.dao.PlanoDeSaudeDao;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 
 public class PanelPlanoDeSaude extends javax.swing.JPanel {
@@ -179,6 +180,13 @@ public class PanelPlanoDeSaude extends javax.swing.JPanel {
     private void ajustarTabela() {
         tablePlanoDeSaude.getTableHeader().setReorderingAllowed(false);
         tablePlanoDeSaude.setDefaultEditor(Object.class, null);
+        
+        tablePlanoDeSaude.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tablePlanoDeSaude.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tablePlanoDeSaude.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tablePlanoDeSaude.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tablePlanoDeSaude.getColumnModel().getColumn(3).setPreferredWidth(250);
+        tablePlanoDeSaude.getColumnModel().getColumn(4).setPreferredWidth(210);
     }
 
 }
