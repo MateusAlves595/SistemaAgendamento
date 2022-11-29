@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.ui.MedicoDialog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,11 +11,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDao {
-
+    
     private final static String URL = "C:\\Users\\22282205\\Java\\Especialidade.txt";
     private final static String URL_TEMP = "C:\\Users\\22282205\\Java\\Especialidade-temp.txt";
     private final static Path PATH = Paths.get(URL);
@@ -152,6 +154,15 @@ public class EspecialidadeDao {
         }
 
         return new DefaultTableModel(dados, titulo);
+    }
+    
+    public static DefaultListModel<Especialidade> getListaEspecialidades() {
+        DefaultListModel<Especialidade> listaEspecialidade = new DefaultListModel<>();
+        for (Especialidade e : getEspecialidades()) {
+            listaEspecialidade.addElement(e);
+            listaEspecialidade.toString();
+        }
+        return listaEspecialidade;
     }
 
 }

@@ -5,6 +5,7 @@ import br.senai.sp.jandira.dao.MedicoDao;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import java.awt.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,17 +13,21 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 public class MedicoDialog extends javax.swing.JDialog {
 
     private Medico medico;
     private OperacaoEnum operacao;
+    
 
     public MedicoDialog(java.awt.Frame parent, boolean modal, OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
         preencherTitulo();
+        preencherListaEspecialidades();
+        
     }
 
     public MedicoDialog(
@@ -119,6 +124,12 @@ public class MedicoDialog extends javax.swing.JDialog {
         labelCodigo.setText("Código :");
         jPanel2.add(labelCodigo);
         labelCodigo.setBounds(20, 30, 80, 20);
+
+        textFieldCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCodigoActionPerformed(evt);
+            }
+        });
         jPanel2.add(textFieldCodigo);
         textFieldCodigo.setBounds(20, 60, 100, 30);
 
@@ -238,8 +249,13 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_botaoSalvarMedicoActionPerformed
 
     private void botaoVerdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVerdeActionPerformed
-       
+        DefaultListModel especialidades = new DefaultListModel();
+        DefaultListModel especialidadesMedicos = new DefaultListModel();
     }//GEN-LAST:event_botaoVerdeActionPerformed
+
+    private void textFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldCodigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,8 +315,8 @@ public class MedicoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel labelNomeDoMedico;
     private javax.swing.JLabel labelTelefone;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JList<String> listListaDeEspecialidades;
-    private javax.swing.JList<String> listListaDeEspecialidadesDoMedico;
+    private javax.swing.JList<Especialidade> listListaDeEspecialidades;
+    private javax.swing.JList<Especialidade> listListaDeEspecialidadesDoMedico;
     private javax.swing.JScrollPane scrollEspecialidadesDoMedico;
     private javax.swing.JScrollPane scrollListaDeEspecialidades;
     private javax.swing.JTextField textFieldCodigo;
@@ -349,5 +365,10 @@ public class MedicoDialog extends javax.swing.JDialog {
 
         dispose();
     }
-
+    
+    private void preencherListaEspecialidades() {
+        listListaDeEspecialidades.setModel(EspecialidadeDao.getListaEspecialidades());
+    }
+    
+    
 }
